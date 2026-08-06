@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJUTSA DIGITAL | Marius DJUTSA — Développeur Full Stack</title>
+    <meta name="description" content="Portfolio de Marius DJUTSA, Développeur Full Stack Mobile • Web • Desktop. Moins de bruit. Plus d'impact.">
+    <meta name="theme-color" content="#050816" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
+    <meta property="og:title" content="DJUTSA DIGITAL | Marius DJUTSA">
+    <meta property="og:description" content="Développeur Full Stack — Flutter, Web, Desktop. Moins de bruit. Plus d'impact.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        // Les couleurs pointent vers les variables CSS définies dans style.css,
+        // ce qui permet au portfolio de suivre automatiquement le thème système
+        // (clair/sombre) sans dupliquer la palette ici.
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dd: {
+                            bg: 'var(--dd-bg)',
+                            surface: 'var(--dd-surface)',
+                            accent: 'var(--dd-accent)',
+                            accent2: 'var(--dd-accent2)',
+                            text: 'var(--dd-text)',
+                            text2: 'var(--dd-text2)',
+                            success: 'var(--dd-success)',
+                            error: 'var(--dd-error)'
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Space Grotesk', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="antialiased">
+    <div id="loader">
+        <div class="loader-logo">
+            <div class="loader-glow"></div>
+            <svg viewBox="0 0 100 100"><path d="M20,80 L20,20 L50,20 L50,50 L35,50 M50,20 L80,20 L80,80 L50,80 L50,50 L65,50"/></svg>
+        </div>
+        <div class="loader-slogan">Moins de bruit. Plus d'impact.</div>
+    </div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="journey-line" id="journey-line">
+        <div class="journey-progress" id="journey-progress" style="height:0%"></div>
+        <div class="journey-node" style="top:6%" data-section="hero"></div>
+        <div class="journey-node" style="top:16%" data-section="about"></div>
+        <div class="journey-node" style="top:26%" data-section="skills"></div>
+        <div class="journey-node" style="top:36%" data-section="technologies"></div>
+        <div class="journey-node" style="top:46%" data-section="experiences"></div>
+        <div class="journey-node" style="top:56%" data-section="certifications"></div>
+        <div class="journey-node" style="top:68%" data-section="projects"></div>
+        <div class="journey-node" style="top:80%" data-section="services"></div>
+        <div class="journey-node" style="top:92%" data-section="contact"></div>
+    </div>
+
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <div class="glass border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16 lg:h-20">
+                    <a href="#hero" class="flex items-center gap-3 group">
+                        <svg width="36" height="36" viewBox="0 0 100 100" class="transition-transform group-hover:rotate-12">
+                            <path d="M20,80 L20,20 L50,20 L50,50 L35,50 M50,20 L80,20 L80,80 L50,80 L50,50 L65,50" fill="none" style="stroke:var(--dd-accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="font-display font-bold text-lg tracking-tight">DJUTSA<span class="text-dd-accent">DIGITAL</span></span>
+                    </a>
+                    <div class="hidden lg:flex items-center gap-8">
+                        <a href="#about" class="nav-link text-sm font-medium text-dd-text2 hover:text-dd-text transition-colors">À propos</a>
+                        <a href="#skills" class="nav-link text-sm font-medium text-dd-text2 hover:text-dd-text transition-colors">Compétences</a>
+                        <a href="#experiences" class="nav-link text-sm font-medium text-dd-text2 hover:text-dd-text transition-colors">Expériences</a>
+                        <a href="#certifications" class="nav-link text-sm font-medium text-dd-text2 hover:text-dd-text transition-colors">Certifications</a>
+                        <a href="#projects" class="nav-link text-sm font-medium text-dd-text2 hover:text-dd-text transition-colors">Projets</a>
+                        <a href="#services" class="nav-link text-sm font-medium text-dd-text2 hover:text-dd-text transition-colors">Services</a>
+                        <a href="#contact" class="nav-link text-sm font-medium text-dd-text2 hover:text-dd-text transition-colors">Contact</a>
+                        <button id="btn-recruiter" class="dd-btn dd-btn-secondary text-xs py-2 px-4">Mode Recruteur</button>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <button id="btn-cmd" class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-dd-text2 hover:text-dd-text hover:border-dd-accent/50 transition-all">
+                            <i data-lucide="command" class="w-3 h-3"></i><span>K</span>
+                        </button>
+                        <button title="boutons" id="btn-mobile-menu" class="lg:hidden p-2 text-dd-text2 hover:text-dd-text">
+                            <i data-lucide="menu" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="lg:hidden hidden glass border-b border-white/5">
+            <div class="px-6 py-4 space-y-3">
+                <a href="#about" class="block py-2 text-dd-text2 hover:text-dd-text">À propos</a>
+                <a href="#skills" class="block py-2 text-dd-text2 hover:text-dd-text">Compétences</a>
+                <a href="#experiences" class="block py-2 text-dd-text2 hover:text-dd-text">Expériences</a>
+                <a href="#certifications" class="block py-2 text-dd-text2 hover:text-dd-text">Certifications</a>
+                <a href="#projects" class="block py-2 text-dd-text2 hover:text-dd-text">Projets</a>
+                <a href="#services" class="block py-2 text-dd-text2 hover:text-dd-text">Services</a>
+                <a href="#contact" class="block py-2 text-dd-text2 hover:text-dd-text">Contact</a>
+                <button id="btn-recruiter-mobile" class="dd-btn dd-btn-secondary w-full justify-center text-xs py-2">Mode Recruteur</button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <canvas id="hero-canvas"></canvas>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-dd-bg/50 to-dd-bg pointer-events-none z-10"></div>
+        <div class="relative z-20 text-center px-6 max-w-5xl mx-auto">
+            <div class="reveal hero-element">
+                <p class="font-mono text-dd-accent2 text-sm tracking-[4px] uppercase mb-6">Développeur Full Stack</p>
+                <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6">
+                    Marius <span class="text-transparent bg-clip-text bg-gradient-to-r from-dd-accent to-dd-accent2">DJUTSA</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-dd-text2 max-w-2xl mx-auto mb-4 font-light">Mobile • Web • Desktop</p>
+                <p class="text-dd-text2 max-w-xl mx-auto mb-10 leading-relaxed">
+                    Je transforme des idées en solutions numériques performantes. Applications modernes, intuitives et évolutives avec une attention obsessionnelle aux détails.
+                </p>
+            </div>
+            <div class="reveal hero-element flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+                <a href="#projects" class="dd-btn dd-btn-primary"><i data-lucide="briefcase" class="w-4 h-4"></i>Voir mes projets</a>
+                <a href="djutsa-digital-cv.pdf" download="djutsa-digital-cv.pdf" class="dd-btn dd-btn-secondary"><i data-lucide="download" class="w-4 h-4"></i>Télécharger mon CV</a>
+            </div>
+            <div class="reveal hero-element flex items-center justify-center gap-6">
+                <a href="https://djutsa-marius.github.io" target="_blank" rel="noopener" class="text-dd-text2 hover:text-dd-accent transition-colors" aria-label="GitHub"><i data-lucide="github" class="w-5 h-5"></i></a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener" class="text-dd-text2 hover:text-dd-accent transition-colors" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                <a href="mailto:djutsamarius@gmail.com" class="text-dd-text2 hover:text-dd-accent transition-colors" aria-label="Email"><i data-lucide="mail" class="w-5 h-5"></i></a>
+                <a href="https://wa.me/237688850245" target="_blank" rel="noopener" class="text-dd-text2 hover:text-dd-accent transition-colors" aria-label="WhatsApp"><i data-lucide="message-circle" class="w-5 h-5"></i></a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 animate-bounce"><i data-lucide="chevron-down" class="w-6 h-6 text-dd-text2"></i></div>
+    </section>
+
+    <section id="about" class="relative py-24 lg:py-32">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-start">
+                <div class="reveal">
+                    <div class="section-label">À propos</div>
+                    <h2 class="font-display text-4xl lg:text-5xl font-bold mb-6">Mon Histoire</h2>
+                    <p class="text-dd-text2 leading-relaxed mb-6">
+                        Passionné par la technologie depuis mon plus jeune âge, j'ai construit mon parcours autour d'une conviction : chaque ligne de code doit résoudre un problème réel. De la conception d'interfaces intuitives à l'architecture de bases de données robustes,
+                        je maîtrise l'ensemble du cycle de développement.
+                    </p>
+                    <p class="text-dd-text2 leading-relaxed mb-8">
+                        Mon approche combine rigueur technique et créativité. Je ne me contente pas de coder — je conçois des expériences. Mon projet phare, une application de gestion de restaurant développée avec Flutter et Firebase, illustre ma capacité à livrer des solutions
+                        complètes, de la maquette au déploiement.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="dd-badge"><i data-lucide="smartphone" class="w-3 h-3"></i>Mobile</span>
+                        <span class="dd-badge"><i data-lucide="globe" class="w-3 h-3"></i>Web</span>
+                        <span class="dd-badge"><i data-lucide="monitor" class="w-3 h-3"></i>Desktop</span>
+                        <span class="dd-badge"><i data-lucide="database" class="w-3 h-3"></i>Backend</span>
+                    </div>
+                </div>
+                <div class="reveal space-y-8">
+                    <div class="timeline-item pb-8">
+                        <h3 class="font-display font-semibold text-lg mb-1">Débuts en programmation</h3>
+                        <p class="text-dd-accent2 text-sm font-mono mb-2">2018 — 2019</p>
+                        <p class="text-dd-text2 text-sm leading-relaxed">Premiers pas avec Java et découverte de la logique algorithmique. Passion instantanée pour la création logicielle.</p>
+                    </div>
+                    <div class="timeline-item pb-8">
+                        <h3 class="font-display font-semibold text-lg mb-1">Formation académique</h3>
+                        <p class="text-dd-accent2 text-sm font-mono mb-2">2019 — 2022</p>
+                        <p class="text-dd-text2 text-sm leading-relaxed">Études approfondies en développement logiciel, conception de bases de données (Merise, UML) et architecture applicative.</p>
+                    </div>
+                    <div class="timeline-item pb-8">
+                        <h3 class="font-display font-semibold text-lg mb-1">Spécialisation Full Stack</h3>
+                        <p class="text-dd-accent2 text-sm font-mono mb-2">2022 — 2024</p>
+                        <p class="text-dd-text2 text-sm leading-relaxed">Maîtrise de Flutter pour le cross-platform, approfondissement du web moderne (React, Next.js) et expériences professionnelles.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3 class="font-display font-semibold text-lg mb-1">DJUTSA DIGITAL</h3>
+                        <p class="text-dd-accent2 text-sm font-mono mb-2">2024 — Aujourd'hui</p>
+                        <p class="text-dd-text2 text-sm leading-relaxed">Lancement de ma marque personnelle. Développement freelance, projets personnels ambitieux et recherche constante de l'excellence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="relative py-24 lg:py-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="section-label justify-center">Compétences</div>
+                <h2 class="font-display text-4xl lg:text-5xl font-bold mb-4">Domaines d'expertise</h2>
+                <p class="text-dd-text2 max-w-2xl mx-auto">Cliquez sur une sphère pour explorer les technologies associées.</p>
+            </div>
+            <div class="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20">
+                <div class="reveal relative w-48 h-48 flex items-center justify-center">
+                    <div class="absolute inset-0 rounded-full bg-gradient-to-br from-dd-accent/20 to-dd-accent2/10 blur-2xl"></div>
+                    <svg width="120" height="120" viewBox="0 0 100 100" class="relative z-10">
+                        <defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:var(--dd-accent)"/><stop offset="100%" style="stop-color:var(--dd-accent2)"/></linearGradient></defs>
+                        <path d="M20,80 L20,20 L50,20 L50,50 L35,50 M50,20 L80,20 L80,80 L50,80 L50,50 L65,50" fill="none" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                    <div class="reveal skill-orb group" data-skill="mobile"><i data-lucide="smartphone" class="w-6 h-6 text-dd-accent mb-2"></i><span class="text-xs font-medium">Mobile</span></div>
+                    <div class="reveal skill-orb group" data-skill="web"><i data-lucide="globe" class="w-6 h-6 text-dd-accent mb-2"></i><span class="text-xs font-medium">Web</span></div>
+                    <div class="reveal skill-orb group" data-skill="desktop"><i data-lucide="monitor" class="w-6 h-6 text-dd-accent mb-2"></i><span class="text-xs font-medium">Desktop</span></div>
+                    <div class="reveal skill-orb group" data-skill="uxui"><i data-lucide="palette" class="w-6 h-6 text-dd-accent mb-2"></i><span class="text-xs font-medium">UX/UI</span></div>
+                    <div class="reveal skill-orb group" data-skill="database"><i data-lucide="database" class="w-6 h-6 text-dd-accent mb-2"></i><span class="text-xs font-medium">Data</span></div>
+                    <div class="reveal skill-orb group" data-skill="modeling"><i data-lucide="box" class="w-6 h-6 text-dd-accent mb-2"></i><span class="text-xs font-medium">Modélisation</span></div>
+                </div>
+            </div>
+            <div id="skill-details" class="mt-16 hidden">
+                <div class="glass rounded-3xl p-8 lg:p-12">
+                    <h3 id="skill-title" class="font-display text-2xl font-bold mb-6"></h3>
+                    <div id="skill-content" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="technologies" class="relative py-24 lg:py-32">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="section-label justify-center">Technologies</div>
+                <h2 class="font-display text-4xl lg:text-5xl font-bold mb-4">Stack Technique</h2>
+                <p class="text-dd-text2 max-w-2xl mx-auto">Les outils que j'utilise au quotidien pour construire des produits de qualité.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
+                <div class="reveal tech-card group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4 mx-auto"><i data-lucide="smartphone" class="w-6 h-6 text-dd-accent"></i></div>
+                    <h3 class="font-display font-semibold mb-1">Flutter</h3>
+                    <p class="text-xs text-dd-text2">Cross-platform mobile</p>
+                    <div class="tech-level" style="transform:scaleX(.95)"></div>
+                </div>
+                <div class="reveal tech-card group">
+                    <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center mb-4 mx-auto"><i data-lucide="code-2" class="w-6 h-6 text-orange-400"></i></div>
+                    <h3 class="font-display font-semibold mb-1">Dart</h3>
+                    <p class="text-xs text-dd-text2">Langage Flutter</p>
+                    <div class="tech-level" style="transform:scaleX(.9)"></div>
+                </div>
+                <div class="reveal tech-card group">
+                    <div class="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center mb-4 mx-auto"><i data-lucide="coffee" class="w-6 h-6 text-yellow-400"></i></div>
+                    <h3 class="font-display font-semibold mb-1">Java</h3>
+                    <p class="text-xs text-dd-text2">Android & Desktop</p>
+                    <div class="tech-level" style="transform:scaleX(.85)"></div>
+                </div>
+                <div class="reveal tech-card group">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4 mx-auto"><i data-lucide="globe" class="w-6 h-6 text-cyan-400"></i></div>
+                    <h3 class="font-display font-semibold mb-1">React / Next.js</h3>
+                    <p class="text-xs text-dd-text2">Web moderne</p>
+                    <div class="tech-level" style="transform:scaleX(.8)"></div>
+                </div>
+                <div class="reveal tech-card group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-400/10 flex items-center justify-center mb-4 mx-auto"><i data-lucide="file-code" class="w-6 h-6 text-blue-300"></i></div>
+                    <h3 class="font-display font-semibold mb-1">TypeScript</h3>
+                    <p class="text-xs text-dd-text2">Typage strict</p>
+                    <div class="tech-level" style="transform:scaleX(.75)"></div>
+                </div>
+                <div class="reveal tech-card group">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-4 mx-auto"><i data-lucide="server" class="w-6 h-6 text-purple-400"></i></div>
+                    <h3 class="font-display font-semibold mb-1">Firebase</h3>
+                    <p class="text-xs text-dd-text2">Backend as a Service</p>
+                    <div class="tech-level" style="transform:scaleX(.9)"></div>
+                </div>
+                <div class="reveal tech-card group">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center mb-4 mx-auto"><i data-lucide="database" class="w-6 h-6 text-indigo-400"></i></div>
+                    <h3 class="font-display font-semibold mb-1">MySQL</h3>
+                    <p class="text-xs text-dd-text2">Base relationnelle</p>
+                    <div class="tech-level" style="transform:scaleX(.85)"></div>
+                </div>
+                <div class="reveal tech-card group">
+                    <div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center mb-4 mx-auto"><i data-lucide="layout" class="w-6 h-6 text-pink-400"></i></div>
+                    <h3 class="font-display font-semibold mb-1">Figma</h3>
+                    <p class="text-xs text-dd-text2">Design & Prototypage</p>
+                    <div class="tech-level" style="transform:scaleX(.8)"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCES SECTION -->
+    <section id="experiences" class="relative py-24 lg:py-32">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="section-label justify-center">Expériences</div>
+                <h2 class="font-display text-4xl lg:text-5xl font-bold mb-4">Parcours en entreprise</h2>
+                <p class="text-dd-text2 max-w-2xl mx-auto">Des expériences professionnelles et académiques qui ont façonné mon expertise technique.</p>
+            </div>
+
+            <div class="relative">
+                <div class="absolute left-6 lg:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-dd-accent via-dd-accent2 to-transparent opacity-30 lg:-translate-x-px"></div>
+
+                <div class="relative mb-12 lg:mb-16">
+                    <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                        <div class="lg:text-right lg:pr-12 reveal">
+                            <div class="exp-card">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-12 h-12 rounded-xl bg-dd-accent/10 flex items-center justify-center">
+                                            <i data-lucide="briefcase" class="w-6 h-6 text-dd-accent"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="font-display text-xl font-bold">Développeur Full Stack (stagiaire)</h3>
+                                            <p class="text-dd-accent2 text-sm font-mono">Entreprise / PREST-SERVICE Sarl</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-dd-text2 text-sm font-mono mb-3">Mars 2024 — Présent</p>
+                                <p class="text-dd-text2 text-sm leading-relaxed mb-4">
+                                    Conception et développement d'applications desktop de gestion des incidents du parc informatique. Architecture de bases de données et Modele View Controlller (MVC).
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="dd-badge text-xs">Java</span>
+                                    <span class="dd-badge text-xs">MVC</span>
+                                    <span class="dd-badge text-xs">JavaFX</span>
+                                    <span class="dd-badge text-xs">MySQL</span>
+                                </div>
+                                <div class="flex items-center gap-2 p-3 rounded-xl bg-dd-success/5 border border-dd-success/20">
+                                    <i data-lucide="file-check" class="w-4 h-4 text-dd-success flex-shrink-0"></i>
+                                    <span class="text-xs text-dd-success font-medium">Attestation de stage disponible sur demande</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden lg:flex items-center justify-center reveal">
+                            <div class="exp-node"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative mb-12 lg:mb-16">
+                    <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                        <div class="hidden lg:flex items-center justify-center reveal">
+                            <div class="exp-node-intern"></div>
+                        </div>
+                        <div class="lg:pl-12 reveal">
+                            <div class="exp-card">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-12 h-12 rounded-xl bg-dd-accent2/10 flex items-center justify-center">
+                                            <i data-lucide="code-2" class="w-6 h-6 text-dd-accent2"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="font-display text-xl font-bold">Développeur web (Cadre académique)</h3>
+                                            <p class="text-dd-accent2 text-sm font-mono">Intitut Universitaire de la Cote</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-dd-text2 text-sm font-mono mb-3">Novenbre 2025 — Janvier 2026</p>
+                                <p class="text-dd-text2 text-sm leading-relaxed mb-4">
+                                    Développement d'applications web. Participation à la conception UI/UX, développement de features critiques et revue de code en équipe agile.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="dd-badge text-xs">PHP</span>
+                                    <span class="dd-badge text-xs">MySQL</span>
+                                    <span class="dd-badge text-xs">HTML5 & CSS3</span>
+                                    <span class="dd-badge text-xs">Git</span>
+                                </div>
+                                <div class="flex items-center gap-2 p-3 rounded-xl bg-dd-success/5 border border-dd-success/20">
+                                    <i data-lucide="file-check" class="w-4 h-4 text-dd-success flex-shrink-0"></i>
+                                    <span class="text-xs text-dd-success font-medium"><a href="https://github.com/DJUTSA-Marius/Chez-Suzanne">Voir le projet</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative mb-12 lg:mb-16">
+                    <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                        <div class="lg:text-right lg:pr-12 reveal">
+                            <div class="exp-card">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center">
+                                            <i data-lucide="graduation-cap" class="w-6 h-6 text-purple-400"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="font-display text-xl font-bold">Developpeur mobile</h3>
+                                            <p class="text-dd-accent2 text-sm font-mono">Cadre personnel</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-dd-text2 text-sm font-mono mb-3">Mars 2023 — Juin 2023</p>
+                                <p class="text-dd-text2 text-sm leading-relaxed mb-4">
+                                    Développement d'une application mobile de gestion d'un restaurant.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="dd-badge text-xs">Flutter</span>
+                                    <span class="dd-badge text-xs">Dart</span>
+                                    <span class="dd-badge text-xs">Firebase</span>
+                                    <span class="dd-badge text-xs">Git</span>
+                                </div>
+                                <div class="flex items-center gap-2 p-3 rounded-xl bg-dd-success/5 border border-dd-success/20">
+                                    <i data-lucide="file-check" class="w-4 h-4 text-dd-success flex-shrink-0"></i>
+                                    <a href="https://github.com/DJUTSA-Marius/mboafood" class="text-xs text-dd-success font-medium">Voir le projet      </a>
+                                    <a href="mboafood.apk" download="mboafood.apk" class="dd-btn dd-btn-secondary"><i data-lucide="download" class="w-4 h-4"></i>Télécharger fichier installation android</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden lg:flex items-center justify-center reveal">
+                            <div class="exp-node-intern"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                        <div class="hidden lg:flex items-center justify-center reveal">
+                            <div class="exp-node-intern"></div>
+                        </div>
+                        <div class="lg:pl-12 reveal">
+                            <div class="exp-card">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+                                            <i data-lucide="building-2" class="w-6 h-6 text-emerald-400"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="font-display text-xl font-bold">Projet de Fin d'Études BTS</h3>
+                                            <p class="text-dd-accent2 text-sm font-mono">Institut Universitaire de la cote (IUC)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-dd-text2 text-sm font-mono mb-3">Septembre 2025 — Avril 2026</p>
+                                <p class="text-dd-text2 text-sm leading-relaxed mb-4">
+                                    Conception et réalisation d'un système de gestion du parc informatique (cas de prest-service sarl). Analyse des besoins, modélisation Merise, développement full stack et déploiement.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="dd-badge text-xs">Java</span>
+                                    <span class="dd-badge text-xs">MySQL</span>
+                                    <span class="dd-badge text-xs">UML</span>
+                                    <span class="dd-badge text-xs">Merise</span>
+                                </div>
+                                <div class="flex items-center gap-2 p-3 rounded-xl bg-dd-success/5 border border-dd-success/20">
+                                    <i data-lucide="file-check" class="w-4 h-4 text-dd-success flex-shrink-0"></i>
+                                    <span class="text-xs text-dd-success font-medium"><a href="https://github.com/DJUTSA-Marius/FixIT">Voir le repos github</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 reveal">
+                <div class="glass rounded-2xl p-6 text-center">
+                    <div class="text-3xl font-display font-bold text-dd-accent mb-1">4</div>
+                    <div class="text-sm text-dd-text2">Expériences</div>
+                </div>
+                <div class="glass rounded-2xl p-6 text-center">
+                    <div class="text-3xl font-display font-bold text-dd-accent mb-1">2</div>
+                    <div class="text-sm text-dd-text2">Stages pro.</div>
+                </div>
+                <div class="glass rounded-2xl p-6 text-center">
+                    <div class="text-3xl font-display font-bold text-dd-accent mb-1">2</div>
+                    <div class="text-sm text-dd-text2">Stages acad.</div>
+                </div>
+                <div class="glass rounded-2xl p-6 text-center">
+                    <div class="text-3xl font-display font-bold text-dd-accent mb-1">4</div>
+                    <div class="text-sm text-dd-text2">Attestations</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="relative py-24 lg:py-32">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="section-label justify-center">Certifications</div>
+                <h2 class="font-display text-4xl lg:text-5xl font-bold mb-4">Formations validées</h2>
+                <p class="text-dd-text2 max-w-2xl mx-auto">Des certifications reconnues qui attestent de mon engagement envers l'excellence technique.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="reveal cert-card group">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center">
+                            <i data-lucide="award" class="w-7 h-7 text-emerald-400"></i>
+                        </div>
+                        <span class="cert-badge"><i data-lucide="check-circle" class="w-3 h-3"></i>Validée</span>
+                    </div>
+                    <h3 class="font-display text-xl font-bold mb-2">Responsive Web Design</h3>
+                    <p class="text-dd-accent2 text-sm font-mono mb-3">freeCodeCamp</p>
+                    <p class="text-dd-text2 text-sm leading-relaxed mb-6 flex-grow">
+                        Certification attestant la maîtrise complète du HTML5 et CSS3 modernes. Construction de pages web accessibles, flexbox, grid, media queries et design mobile-first.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="dd-badge text-xs">HTML5</span>
+                        <span class="dd-badge text-xs">CSS3</span>
+                        <span class="dd-badge text-xs">Flexbox</span>
+                        <span class="dd-badge text-xs">Grid</span>
+                        <span class="dd-badge text-xs">Accessibilité</span>
+                    </div>
+                    <a href="https://freecodecamp.org/certification/fcc-4e009a24-d2b0-4d2c-a4f8-4316582326ab/responsive-web-design" target="_blank" rel="noopener" class="dd-btn dd-btn-secondary w-full justify-center text-xs py-2.5">
+                        <i data-lucide="external-link" class="w-4 h-4"></i>Voir la certification
+                    </a>
+                </div>
+                <div class="reveal cert-card group">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center">
+                            <i data-lucide="graduation-cap" class="w-7 h-7 text-dd-accent"></i>
+                        </div>
+                        <span class="cert-badge-pending"><i data-lucide="clock" class="w-3 h-3"></i>En cours</span>
+                    </div>
+                    <h3 class="font-display text-xl font-bold mb-2">JavaScript Algorithms & Data Structures</h3>
+                    <p class="text-dd-accent2 text-sm font-mono mb-3">freeCodeCamp</p>
+                    <p class="text-dd-text2 text-sm leading-relaxed mb-6 flex-grow">
+                        Formation avancée sur les structures de données, les algorithmes et la programmation orientée objet en JavaScript ES6+.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="dd-badge text-xs">JavaScript</span>
+                        <span class="dd-badge text-xs">ES6+</span>
+                        <span class="dd-badge text-xs">Algorithmes</span>
+                        <span class="dd-badge text-xs">OOP</span>
+                    </div>
+                    <button class="dd-btn dd-btn-secondary w-full justify-center text-xs py-2.5 opacity-60 cursor-not-allowed" disabled>
+                        <i data-lucide="lock" class="w-4 h-4"></i>En progression
+                    </button>
+                </div>
+                <div class="reveal cert-card group">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-purple-500/10 flex items-center justify-center">
+                            <i data-lucide="cloud" class="w-7 h-7 text-purple-400"></i>
+                        </div>
+                        <span class="cert-badge-pending"><i data-lucide="clock" class="w-3 h-3"></i>À venir</span>
+                    </div>
+                    <h3 class="font-display text-xl font-bold mb-2">Google Cloud Digital Leader</h3>
+                    <p class="text-dd-accent2 text-sm font-mono mb-3">Google Cloud</p>
+                    <p class="text-dd-text2 text-sm leading-relaxed mb-6 flex-grow">
+                        Certification sur les fondamentaux du cloud computing, l'architecture cloud et les services Google Cloud Platform.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="dd-badge text-xs">Cloud</span>
+                        <span class="dd-badge text-xs">GCP</span>
+                        <span class="dd-badge text-xs">Architecture</span>
+                    </div>
+                    <button class="dd-btn dd-btn-secondary w-full justify-center text-xs py-2.5 opacity-60 cursor-not-allowed" disabled>
+                        <i data-lucide="lock" class="w-4 h-4"></i>À venir
+                    </button>
+                </div>
+            </div>
+            <div class="mt-12 reveal glass rounded-2xl p-8 lg:p-10 text-center">
+                <div class="w-16 h-16 rounded-full bg-dd-accent/10 flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="trending-up" class="w-8 h-8 text-dd-accent"></i>
+                </div>
+                <h3 class="font-display text-xl font-bold mb-2">Apprentissage continu</h3>
+                <p class="text-dd-text2 max-w-xl mx-auto">
+                    Je consacre chaque semaine à l'acquisition de nouvelles compétences. Les certifications sont autant de jalons sur un parcours de perfectionnement permanent.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="relative py-24 lg:py-32">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="section-label justify-center">Projets</div>
+                <h2 class="font-display text-4xl lg:text-5xl font-bold mb-4">Études de cas</h2>
+                <p class="text-dd-text2 max-w-2xl mx-auto">Des projets concrets, des défis relevés, des solutions pensées.</p>
+            </div>
+            <div class="reveal mb-12">
+                <div class="project-card glass">
+                    <div class="grid lg:grid-cols-2 gap-0">
+                        <div class="project-image-slot relative h-64 lg:h-auto overflow-hidden bg-gradient-to-br from-blue-900/40 to-cyan-900/40 flex items-center justify-center min-h-[300px]" data-project-id="restaurant">
+                            <div class="project-image-placeholder absolute inset-0 flex items-center justify-center">
+                                <div class="absolute inset-0 opacity-30" style="background-image:radial-gradient(circle at 2px 2px,rgba(59,130,246,.15) 1px,transparent 0);background-size:24px 24px"></div>
+                                <i data-lucide="utensils" class="w-24 h-24 text-dd-accent/30 relative z-10"></i>
+                            </div>
+                            <div class="absolute top-4 left-4 z-10"><span class="dd-badge bg-dd-accent/20 text-dd-accent border-dd-accent/50">Projet Phare</span></div>
+                        </div>
+                        <div class="p-8 lg:p-12">
+                            <h3 class="font-display text-2xl lg:text-3xl font-bold mb-4">Gestion de Restaurant</h3>
+                            <p class="text-dd-text2 mb-6 leading-relaxed">Application complète de gestion pour restaurant : prise de commandes en temps réel, suivi des tables, gestion des stocks, tableau de bord administrateur et génération de rapports.</p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="dd-badge">Flutter</span><span class="dd-badge">Firebase</span><span class="dd-badge">Dart</span><span class="dd-badge">Cloud Firestore</span>
+                            </div>
+                            <div class="space-y-3 mb-8">
+                                <div class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-dd-success flex-shrink-0 mt-0.5"></i>
+                                    <p class="text-sm text-dd-text2">Architecture MVC propre et maintenable</p>
+                                </div>
+                                <div class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-dd-success flex-shrink-0 mt-0.5"></i>
+                                    <p class="text-sm text-dd-text2">Synchronisation temps réel des commandes</p>
+                                </div>
+                                <div class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-dd-success flex-shrink-0 mt-0.5"></i>
+                                    <p class="text-sm text-dd-text2">Interface intuitive pour serveurs et cuisiniers</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <a href="#" class="dd-btn dd-btn-primary text-xs py-2.5 px-5"><i data-lucide="external-link" class="w-4 h-4"></i>Voir la démo</a>
+                                <a href="https://github.com/DJUTSA-Marius/mboafood" class="dd-btn dd-btn-secondary text-xs py-2.5 px-5"><i data-lucide="github" class="w-4 h-4"></i>Code source</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="reveal project-card glass">
+                    <div class="project-image-slot h-48 bg-gradient-to-br from-purple-900/40 to-pink-900/40 flex items-center justify-center relative overflow-hidden" data-project-id="ecommerce">
+                        <div class="project-image-placeholder absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="shopping-bag" class="w-16 h-16 text-purple-400/30 relative z-10"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold mb-2">Chez Suzanne</h3>
+                        <p class="text-dd-text2 text-sm mb-4">Application de commerce électronique avec panier, paiement intégré et suivi de commandes.</p>
+                        <div class="flex flex-wrap gap-2"><span class="dd-badge text-xs">PHP</span><span class="dd-badge text-xs">HTML5 & CSS3</span><span class="dd-badge text-xs">MySQL</span></div>
+                    </div>
+                </div>
+                <div class="reveal project-card glass">
+                    <div class="project-image-slot h-48 bg-gradient-to-br from-emerald-900/40 to-teal-900/40 flex items-center justify-center relative overflow-hidden" data-project-id="dashboard">
+                        <div class="project-image-placeholder absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="bar-chart-3" class="w-16 h-16 text-emerald-400/30 relative z-10"></i>Voir le projet
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold mb-2">Dashboard Analytics</h3>
+                        <p class="text-dd-text2 text-sm mb-4">Tableau de bord de visualisation de données avec graphiques interactifs et export PDF.</p>
+                        <div class="flex flex-wrap gap-2"><span class="dd-badge text-xs">React</span><span class="dd-badge text-xs">D3.js</span><span class="dd-badge text-xs">Node.js</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="relative py-24 lg:py-32">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="section-label justify-center">Services</div>
+                <h2 class="font-display text-4xl lg:text-5xl font-bold mb-4">Ce que je propose</h2>
+                <p class="text-dd-text2 max-w-2xl mx-auto">Des prestations sur mesure, de la conception au déploiement.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="reveal dd-card group">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6"><i data-lucide="smartphone" class="w-7 h-7 text-dd-accent"></i></div>
+                    <h3 class="font-display text-xl font-bold mb-3">Développement Flutter</h3>
+                    <p class="text-dd-text2 text-sm leading-relaxed mb-4">Applications mobiles cross-platform iOS et Android avec une seule codebase. Performance native, interfaces fluides et maintenance simplifiée.</p>
+                    <ul class="space-y-2 text-sm text-dd-text2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-dd-success"></i>Apps iOS & Android</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-dd-success"></i>State Management</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-dd-success"></i>Animations complexes</li>
+                    </ul>
+                </div>
+                <div class="reveal dd-card group">
+                    <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 flex items-center justify-center mb-6"><i data-lucide="globe" class="w-7 h-7 text-dd-accent2"></i></div>
+                    <h3 class="font-display text-xl font-bold mb-3">Développement Web</h3>
+                    <p class="text-dd-text2 text-sm leading-relaxed mb-4">Sites vitrines, applications web progressives et dashboards interactifs. Stack moderne avec React, Next.js et TypeScript.</p>
+                    <ul class="space-y-2 text-sm text-dd-text2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-dd-success"></i>Sites & PWAs</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-dd-success"></i>SEO optimisé</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-dd-success"></i>Performance 90+</li>
+                    </ul>
+                </div>
+                <div class="reveal dd-card group">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-500/10 flex items-center justify-center mb-6"><i data-lucide="monitor" class="w-7 h-7 text-purple-400"></i></div>
+                    <h3 class="font-display text-xl font-bold mb-3">Développement Desktop</h3>
+                    <p class="text-dd-text2 text-sm leading-relaxed mb-4">Applications de bureau robustes avec Java, C# ou Flutter Desktop. Gestion de données locale et connectivité réseau.</p>
+                    <ul class="space-y-2 text-sm text-dd-text2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-dd-success"></i>Windows, macOS, Linux</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-dd-success"></i>Bases locales</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-dd-success"></i>Interfaces riches</li>
+                    </ul>
+                </div>
+                <div class="reveal dd-card group">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center mb-6"><i data-lucide="git-branch" class="w-7 h-7 text-emerald-400"></i></div>
+                    <h3 class="font-display text-xl font-bold mb-3">Conception UML / Merise</h3>
+                    <p class="text-dd-text2 text-sm leading-relaxed mb-4">Modélisation architecturale complète : diagrammes de classes, cas d'utilisation, MCD/MLD, et documentation technique.</p>
+                    <ul class="space-y-2 text-sm text-dd-text2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-dd-success"></i>Diagrammes UML</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-dd-success"></i>MCD / MLD / MPD</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-dd-success"></i>Documentation</li>
+                    </ul>
+                </div>
+                <div class="reveal dd-card group">
+                    <div class="w-14 h-14 rounded-2xl bg-pink-500/10 flex items-center justify-center mb-6"><i data-lucide="pen-tool" class="w-7 h-7 text-pink-400"></i></div>
+                    <h3 class="font-display text-xl font-bold mb-3">Design UX/UI</h3>
+                    <p class="text-dd-text2 text-sm leading-relaxed mb-4">Conception d'interfaces utilisateur intuitives et esthétiques. Prototypage interactif, systèmes de design et tests utilisateurs.</p>
+                    <ul class="space-y-2 text-sm text-dd-text2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-dd-success"></i>Wireframes & Maquettes</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-dd-success"></i>Prototypage Figma</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-dd-success"></i>Design System</li>
+                    </ul>
+                </div>
+                <div class="reveal dd-card group">
+                    <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center mb-6"><i data-lucide="database" class="w-7 h-7 text-indigo-400"></i></div>
+                    <h3 class="font-display text-xl font-bold mb-3">Bases de données</h3>
+                    <p class="text-dd-text2 text-sm leading-relaxed mb-4">Conception, optimisation et administration de bases de données relationnelles et NoSQL. Requêtes complexes et sécurité des données.</p>
+                    <ul class="space-y-2 text-sm text-dd-text2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-dd-success"></i>MySQL & PostgreSQL</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-dd-success"></i>Firebase & NoSQL</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-dd-success"></i>Optimisation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="relative py-24 lg:py-32">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="reveal">
+                    <div class="section-label">Contact</div>
+                    <h2 class="font-display text-4xl lg:text-5xl font-bold mb-6">Travaillons ensemble</h2>
+                    <p class="text-dd-text2 leading-relaxed mb-8">Vous avez un projet en tête ? Vous cherchez un développeur fiable et passionné ? Discutons de vos besoins et voyons comment je peux vous aider à les concrétiser.</p>
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-dd-accent/10 flex items-center justify-center"><i data-lucide="mail" class="w-5 h-5 text-dd-accent"></i></div>
+                            <div>
+                                <p class="text-sm text-dd-text2">Email</p>
+                                <p class="font-medium"><a href="mailto:djutsamarius@gmail.com">djutsamarius@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-dd-accent/10 flex items-center justify-center"><i data-lucide="phone" class="w-5 h-5 text-dd-accent"></i></div>
+                            <div>
+                                <p class="text-sm text-dd-text2">Téléphone</p>
+                                <p class="font-medium"><a href="tel:+237688850245">+237 688 850 245</a></p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-dd-accent/10 flex items-center justify-center"><i data-lucide="map-pin" class="w-5 h-5 text-dd-accent"></i></div>
+                            <div>
+                                <p class="text-sm text-dd-text2">Localisation</p>
+                                <p class="font-medium">Cameroun • Disponible en remote</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex gap-4">
+                        <a href="https://djutsa-marius.github.io" target="_blank" rel="noopener" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-dd-text2 hover:text-dd-accent hover:border-dd-accent/50 transition-all"><i data-lucide="github" class="w-5 h-5"></i></a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-dd-text2 hover:text-dd-accent hover:border-dd-accent/50 transition-all"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-dd-text2 hover:text-dd-accent hover:border-dd-accent/50 transition-all"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="https://wa.me/237688850245" target="_blank" rel="noopener" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-dd-text2 hover:text-dd-accent hover:border-dd-accent/50 transition-all"><i data-lucide="message-circle" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <form id="contact-form" class="glass rounded-3xl p-8 lg:p-10 space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div><label class="block text-sm font-medium mb-2">Nom</label><input type="text" class="dd-input" placeholder="Votre nom" required></div>
+                            <div><label class="block text-sm font-medium mb-2">Email</label><input type="email" class="dd-input" placeholder="votre@email.com" required></div>
+                        </div>
+                        <div><label class="block text-sm font-medium mb-2">Sujet</label><input type="text" class="dd-input" placeholder="Sujet de votre message" required></div>
+                        <div><label class="block text-sm font-medium mb-2">Message</label><textarea class="dd-input min-h-[140px] resize-none" placeholder="Décrivez votre projet..." required></textarea></div>
+                        <button type="submit" class="dd-btn dd-btn-primary w-full justify-center"><i data-lucide="send" class="w-4 h-4"></i>Envoyer le message</button>
+                        <p id="form-status" class="text-center text-sm hidden"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="relative py-16 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-2">
+                    <a href="#hero" class="flex items-center gap-3 mb-4">
+                        <svg width="32" height="32" viewBox="0 0 100 100">
+                            <path d="M20,80 L20,20 L50,20 L50,50 L35,50 M50,20 L80,20 L80,80 L50,80 L50,50 L65,50" fill="none" style="stroke:var(--dd-accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="font-display font-bold text-lg">DJUTSA<span class="text-dd-accent">DIGITAL</span></span>
+                    </a>
+                    <p class="text-dd-text2 text-sm max-w-sm mb-4">Moins de bruit. Plus d'impact. Développeur Full Stack spécialisé dans les solutions numériques innovantes.</p>
+                    <p class="font-mono text-xs text-dd-text2">© 2024 Marius DJUTSA. Tous droits réservés.</p>
+                </div>
+                <div>
+                    <h4 class="font-display font-semibold mb-4">Navigation</h4>
+                    <ul class="space-y-2 text-sm text-dd-text2">
+                        <li><a href="#about" class="hover:text-dd-accent transition-colors">À propos</a></li>
+                        <li><a href="#skills" class="hover:text-dd-accent transition-colors">Compétences</a></li>
+                        <li><a href="#experiences" class="hover:text-dd-accent transition-colors">Expériences</a></li>
+                        <li><a href="#certifications" class="hover:text-dd-accent transition-colors">Certifications</a></li>
+                        <li><a href="#projects" class="hover:text-dd-accent transition-colors">Projets</a></li>
+                        <li><a href="#services" class="hover:text-dd-accent transition-colors">Services</a></li>
+                        <li><a href="#contact" class="hover:text-dd-accent transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-display font-semibold mb-4">Légal</h4>
+                    <ul class="space-y-2 text-sm text-dd-text2">
+                        <li><a href="mentions-legales.html" class="hover:text-dd-accent transition-colors">Mentions légales</a></li>
+                        <li><a href="politique-confidentialite.html" class="hover:text-dd-accent transition-colors">Politique de confidentialité</a></li>
+                        <li><a href="djutsa-digital-cv.pdf" download="djutsa-digital-cv.pdf" class="hover:text-dd-accent transition-colors">CV PDF</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-xs text-dd-text2">Conçu avec passion par DJUTSA Marius</p>
+                <div class="flex items-center gap-2 text-xs text-dd-text2">
+                    <span>Stack:</span>
+                    <span class="dd-badge text-xs">HTML5</span>
+                    <span class="dd-badge text-xs">Tailwind</span>
+                    <span class="dd-badge text-xs">Three.js</span>
+                    <span class="dd-badge text-xs">GSAP</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Developer Console -->
+    <div id="dev-console">
+        <div class="console-header">
+            <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full bg-dd-error"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div class="w-3 h-3 rounded-full bg-dd-success"></div>
+                <span class="ml-2 text-xs text-dd-text2 font-mono">djutsamarius@gmail.com</span>
+            </div>
+            <button id="close-console" class="text-dd-text2 hover:text-dd-text"><i data-lucide="x" class="w-4 h-4"></i></button>
+        </div>
+        <div class="console-output" id="console-output">
+            <div class="info">DJUTSA DIGITAL Developer Console v1.0</div>
+            <div class="out">Bienvenue ! Tapez 'help' pour voir les commandes disponibles.</div>
+            <div class="out"></div>
+        </div>
+        <div class="console-input-line">
+            <span class="console-prompt">$</span>
+            <input type="text" class="console-input" id="console-input" placeholder="help" autocomplete="off" spellcheck="false">
+        </div>
+    </div>
+
+    <!-- Command Palette -->
+    <div id="cmd-palette">
+        <div class="palette-box">
+            <div class="flex items-center px-4 border-b border-white/5">
+                <i data-lucide="search" class="w-5 h-5 text-dd-text2"></i>
+                <input type="text" class="palette-input" id="palette-input" placeholder="Rechercher une commande..." autocomplete="off">
+                <kbd class="px-2 py-1 rounded bg-white/5 text-xs text-dd-text2 font-mono">ESC</kbd>
+            </div>
+            <div class="palette-list" id="palette-list">
+                <div class="palette-item selected" data-action="goto" data-target="hero"><i data-lucide="home" class="w-4 h-4 icon"></i>
+                    <div>
+                        <div class="text-sm">Accueil</div>
+                        <div class="text-xs text-dd-text2">Section Hero</div>
+                    </div><span class="shortcut">↵</span></div>
+                <div class="palette-item" data-action="goto" data-target="about"><i data-lucide="user" class="w-4 h-4 icon"></i>
+                    <div>
+                        <div class="text-sm">À propos</div>
+                        <div class="text-xs text-dd-text2">Mon histoire et parcours</div>
+                    </div>
+                </div>
+                <div class="palette-item" data-action="goto" data-target="skills"><i data-lucide="zap" class="w-4 h-4 icon"></i>
+                    <div>
+                        <div class="text-sm">Compétences</div>
+                        <div class="text-xs text-dd-text2">Technologies et domaines</div>
+                    </div>
+                </div>
+                <div class="palette-item" data-action="goto" data-target="experiences"><i data-lucide="building-2" class="w-4 h-4 icon"></i>
+                    <div>
+                        <div class="text-sm">Expériences</div>
+                        <div class="text-xs text-dd-text2">Parcours en entreprise</div>
+                    </div>
+                </div>
+                <div class="palette-item" data-action="goto" data-target="certifications"><i data-lucide="award" class="w-4 h-4 icon"></i>
+                    <div>
+                        <div class="text-sm">Certifications</div>
+                        <div class="text-xs text-dd-text2">Formations validées</div>
+                    </div>
+                </div>
+                <div class="palette-item" data-action="goto" data-target="projects"><i data-lucide="briefcase" class="w-4 h-4 icon"></i>
+                    <div>
+                        <div class="text-sm">Projets</div>
+                        <div class="text-xs text-dd-text2">Études de cas</div>
+                    </div>
+                </div>
+                <div class="palette-item" data-action="goto" data-target="services"><i data-lucide="layers" class="w-4 h-4 icon"></i>
+                    <div>
+                        <div class="text-sm">Services</div>
+                        <div class="text-xs text-dd-text2">Prestations proposées</div>
+                    </div>
+                </div>
+                <div class="palette-item" data-action="goto" data-target="contact"><i data-lucide="mail" class="w-4 h-4 icon"></i>
+                    <div>
+                        <div class="text-sm">Contact</div>
+                        <div class="text-xs text-dd-text2">Formulaire et coordonnées</div>
+                    </div>
+                </div>
+                <div class="palette-item" data-action="recruiter"><i data-lucide="briefcase" class="w-4 h-4 icon"></i>
+                    <div>
+                        <div class="text-sm">Mode Recruteur</div>
+                        <div class="text-xs text-dd-text2">Vue optimisée rapide</div>
+                    </div>
+                </div>
+                <div class="palette-item" data-action="theme"><i data-lucide="sun-moon" class="w-4 h-4 icon"></i>
+                    <div>
+                        <div class="text-sm">Thème automatique</div>
+                        <div class="text-xs text-dd-text2">Suit les préférences de votre système</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recruiter Mode -->
+    <div id="recruiter-mode">
+        <div class="min-h-screen">
+            <div class="glass-strong border-b border-white/5 sticky top-0 z-10">
+                <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+                    <span class="font-display font-bold text-lg">Mode <span class="text-dd-accent">Recruteur</span></span>
+                    <button id="close-recruiter" class="dd-btn dd-btn-secondary text-xs py-2 px-4">Fermer</button>
+                </div>
+            </div>
+            <div class="max-w-5xl mx-auto px-6 py-12 space-y-12">
+                <div class="text-center">
+                    <h1 class="font-display text-4xl md:text-5xl font-bold mb-4">Marius <span class="text-dd-accent">DJUTSA</span></h1>
+                    <p class="text-xl text-dd-text2 mb-2">Développeur Full Stack</p>
+                    <p class="text-dd-text2">Mobile • Web • Desktop | Cameroun • Remote</p>
+                    <div class="flex justify-center gap-3 mt-6">
+                        <a href="#contact" class="dd-btn dd-btn-primary text-xs" onclick="closeRecruiter()"><i data-lucide="mail" class="w-4 h-4"></i>Me contacter</a>
+                        <a href="djutsa-digital-cv.pdf" download="djutsa-digital-cv.pdf" class="dd-btn dd-btn-secondary text-xs"><i data-lucide="download" class="w-4 h-4"></i>CV PDF</a>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="glass rounded-2xl p-6 text-center">
+                        <div class="text-3xl font-display font-bold text-dd-accent mb-1">2+</div>
+                        <div class="text-sm text-dd-text2">Années d'expérience</div>
+                    </div>
+                    <div class="glass rounded-2xl p-6 text-center">
+                        <div class="text-3xl font-display font-bold text-dd-accent mb-1">10+</div>
+                        <div class="text-sm text-dd-text2">Projets réalisés</div>
+                    </div>
+                    <div class="glass rounded-2xl p-6 text-center">
+                        <div class="text-3xl font-display font-bold text-dd-accent mb-1">10+</div>
+                        <div class="text-sm text-dd-text2">Technologies maîtrisées</div>
+                    </div>
+                </div>
+                <div class="glass rounded-2xl p-8">
+                    <h2 class="font-display text-2xl font-bold mb-6">Compétences clés</h2>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span>Flutter / Dart</span><span class="text-dd-accent2">95%</span></div>
+                            <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-dd-accent to-dd-accent2 rounded-full" style="width:95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span>React / Next.js</span><span class="text-dd-accent2">80%</span></div>
+                            <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-dd-accent to-dd-accent2 rounded-full" style="width:80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span>Java / Android</span><span class="text-dd-accent2">85%</span></div>
+                            <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-dd-accent to-dd-accent2 rounded-full" style="width:85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span>Bases de données</span><span class="text-dd-accent2">85%</span></div>
+                            <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-dd-accent to-dd-accent2 rounded-full" style="width:85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span>UX / UI Design</span><span class="text-dd-accent2">80%</span></div>
+                            <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-dd-accent to-dd-accent2 rounded-full" style="width:80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span>Architecture / UML</span><span class="text-dd-accent2">90%</span></div>
+                            <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-dd-accent to-dd-accent2 rounded-full" style="width:90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass rounded-2xl p-8">
+                    <h2 class="font-display text-2xl font-bold mb-6">Expériences professionnelles</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/5">
+                            <div class="w-10 h-10 rounded-lg bg-dd-accent/10 flex items-center justify-center flex-shrink-0"><i data-lucide="briefcase" class="w-5 h-5 text-dd-accent"></i></div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-1">
+                                    <h3 class="font-semibold">Développeur mobile</h3><span class="text-xs text-dd-text2 font-mono">2024 — Présent</span></div>
+                                <p class="text-sm text-dd-text2">Cadre Personnel • Flutter, Firebase, React</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/5">
+                            <div class="w-10 h-10 rounded-lg bg-dd-accent2/10 flex items-center justify-center flex-shrink-0"><i data-lucide="code-2" class="w-5 h-5 text-dd-accent2"></i></div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-1">
+                                    <h3 class="font-semibold">Stagiaire Développeur fullstack</h3><span class="text-xs text-dd-text2 font-mono">Juin — Sept 2023</span></div>
+                                <p class="text-sm text-dd-text2">PREST-SERVICE • Java, MVC, MySQL • Attestation disponible</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/5">
+                            <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0"><i data-lucide="graduation-cap" class="w-5 h-5 text-purple-400"></i></div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-1">
+                                    <h3 class="font-semibold">Développeur Web</h3><span class="text-xs text-dd-text2 font-mono">Mars — Juin 2023</span></div>
+                                <p class="text-sm text-dd-text2">Cadre Personnel • HTML, CSS, JS, PHP • Projet disponible</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass rounded-2xl p-8">
+                    <h2 class="font-display text-2xl font-bold mb-6">Certifications</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/5">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0"><i data-lucide="award" class="w-5 h-5 text-emerald-400"></i></div>
+                            <div>
+                                <h3 class="font-semibold">Responsive Web Design — freeCodeCamp</h3>
+                                <p class="text-sm text-dd-text2">HTML5, CSS3, Flexbox, Grid, Accessibilité</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/5 opacity-60">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0"><i data-lucide="graduation-cap" class="w-5 h-5 text-dd-accent"></i></div>
+                            <div>
+                                <h3 class="font-semibold">JavaScript Algorithms & Data Structures — freeCodeCamp</h3>
+                                <p class="text-sm text-dd-text2">En cours de progression</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass rounded-2xl p-8">
+                    <h2 class="font-display text-2xl font-bold mb-6">Projets majeurs</h2>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/5">
+                            <h3 class="font-semibold mb-1">Gestion de Restaurant</h3>
+                            <p class="text-sm text-dd-text2 mb-2">Flutter • Firebase • Architecture MVC</p>
+                            <span class="dd-badge text-xs">Projet Phare</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/5">
+                            <h3 class="font-semibold mb-1">Chez Suzanne</h3>
+                            <p class="text-sm text-dd-text2 mb-2">PHP • HTML5 • MySQL</p>
+                            <span class="dd-badge text-xs">Commerce</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center pb-8">
+                    <p class="text-dd-text2 mb-4">Intéressé par mon profil ?</p>
+                    <a href="#contact" class="dd-btn dd-btn-primary" onclick="closeRecruiter()"><i data-lucide="mail" class="w-4 h-4"></i>Discutons de votre projet</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

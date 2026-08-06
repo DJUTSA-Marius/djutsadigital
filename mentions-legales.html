@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentions légales | DJUTSA DIGITAL</title>
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#050816" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dd: {
+                            bg: 'var(--dd-bg)', surface: 'var(--dd-surface)', accent: 'var(--dd-accent)',
+                            accent2: 'var(--dd-accent2)', text: 'var(--dd-text)', text2: 'var(--dd-text2)',
+                            success: 'var(--dd-success)', error: 'var(--dd-error)'
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Space Grotesk', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="antialiased">
+    <nav class="fixed top-0 left-0 right-0 z-50">
+        <div class="glass border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16 lg:h-20">
+                    <a href="index.html" class="flex items-center gap-3 group">
+                        <svg width="32" height="32" viewBox="0 0 100 100">
+                            <path d="M20,80 L20,20 L50,20 L50,50 L35,50 M50,20 L80,20 L80,80 L50,80 L50,50 L65,50" fill="none" style="stroke:var(--dd-accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="font-display font-bold text-lg tracking-tight">DJUTSA<span class="text-dd-accent">DIGITAL</span></span>
+                    </a>
+                    <a href="index.html" class="dd-btn dd-btn-secondary text-xs py-2 px-4"><i data-lucide="arrow-left" class="w-4 h-4"></i>Retour au portfolio</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="legal-page">
+        <div class="section-label">Informations légales</div>
+        <h1 class="font-display text-4xl lg:text-5xl font-bold mb-8">Mentions légales</h1>
+
+        <h2>1. Éditeur du site</h2>
+        <p>
+            Le présent site portfolio (« DJUTSA DIGITAL ») est édité à titre individuel, dans le cadre d'une activité de développement freelance, par :
+        </p>
+        <ul>
+            <li><strong>Nom :</strong> Marius DJUTSA</li>
+            <li><strong>Activité :</strong> Développeur Full Stack indépendant (Mobile, Web, Desktop)</li>
+            <li><strong>Adresse email :</strong> <a href="mailto:djutsamarius@gmail.com">djutsamarius@gmail.com</a></li>
+            <li><strong>Téléphone :</strong> <a href="tel:+237688850245">+237 688 850 245</a></li>
+            <li><strong>Pays :</strong> Cameroun</li>
+        </ul>
+
+        <h2>2. Responsable de la publication</h2>
+        <p>Marius DJUTSA, en sa qualité d'éditeur du site, est également responsable de la publication de son contenu.</p>
+
+        <h2>3. Hébergement</h2>
+        <p>
+            Ce site est un ensemble de fichiers statiques (HTML, CSS, JavaScript) pouvant être hébergé chez différents prestataires selon le déploiement choisi (par exemple GitHub Pages, Netlify, Vercel ou tout autre hébergeur web).
+            Les coordonnées précises de l'hébergeur en production seront communiquées sur demande, ou peuvent être ajoutées ici une fois l'hébergement définitif choisi.
+        </p>
+
+        <h2>4. Propriété intellectuelle</h2>
+        <p>
+            L'ensemble des éléments présents sur ce site (textes, mises en page, graphismes, logo, code source) est la propriété de Marius DJUTSA, sauf mention contraire. Toute reproduction, représentation, modification ou exploitation, totale ou partielle, de ces éléments sans autorisation préalable est interdite.
+        </p>
+        <p>
+            Les projets présentés dans la section « Études de cas » restent la propriété intellectuelle de leurs clients ou commanditaires respectifs lorsque cela est applicable ; ils sont présentés à titre de démonstration du savoir-faire de Marius DJUTSA.
+        </p>
+
+        <h2>5. Liens externes</h2>
+        <p>
+            Ce site peut contenir des liens vers des sites tiers (GitHub, LinkedIn, freeCodeCamp, WhatsApp, etc.). Marius DJUTSA n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.
+        </p>
+
+        <h2>6. Limitation de responsabilité</h2>
+        <p>
+            Les informations diffusées sur ce site sont réputées fiables, mais leur exactitude n'est pas garantie. Marius DJUTSA se réserve le droit de corriger le contenu à tout moment, sans préavis.
+        </p>
+
+        <h2>7. Contact</h2>
+        <p>
+            Pour toute question relative à ces mentions légales, vous pouvez me contacter à l'adresse
+            <a href="mailto:djutsamarius@gmail.com">djutsamarius@gmail.com</a> ou par téléphone au
+            <a href="tel:+237688850245">+237 688 850 245</a>.
+        </p>
+
+        <p class="text-xs mt-10">Dernière mise à jour : 2024.</p>
+    </main>
+
+    <footer class="relative py-10 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-xs text-dd-text2">© 2024 Marius DJUTSA. Tous droits réservés.</p>
+            <div class="flex items-center gap-4 text-xs text-dd-text2">
+                <a href="index.html" class="hover:text-dd-accent transition-colors">Portfolio</a>
+                <a href="politique-confidentialite.html" class="hover:text-dd-accent transition-colors">Politique de confidentialité</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>
